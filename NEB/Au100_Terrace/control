@@ -1,0 +1,109 @@
+# General parameters
+      1 itrans
+      1 icobo
+      0 icentr     0: off, 1: put center of masss at center of cube, 2: put com at origin
+      5 imetho     0: MD, 1: Energy minimisation
+      1 igeofo     geo file format: 1 - Biograf, 2 - xyz, 4 - pdb
+   15.0 axis1      a cell axis
+   15.0 axis2      b cell axis
+   79.2 axis3      c cell axis
+ 90.000 angle1     cell angles
+ 90.000 angle2     cell angles
+120.000 angle3     cell angles
+     25 irecon     Frequency of reading control-file
+      5 ixmolo     xmolout 0: xyz only, 1: xyz + vels + molnr, 2: xyz + mol.nr, 5: xyz + bonds
+      1 ichupd     Charge update frequency
+      4 icharg     always 4: Full ystem EEM
+ 298.00 mdtemp     MD-temperature (K), unless tregime file is present
+  100.0 tdamp1     1st Berendsen/Anderson temperature damping constant (fs)
+      0 icheck     0: Normal run 1:Check first derivatives;2: Single run
+      0 nrstep
+# MD-parameters
+      1 imdmet     MD-method. 1:Velocity Verlet+Berendsen 2:Hoover-Nose (again NVT); 3:NVE 4:NPT
+  0.250 tstep      MD-time step (fs)
+0.00000 mdpres     MD-pressure (MPa)
+  500.0 pdamp1     Berendsen pressure damping constant (fs)
+      0 inpt       0: Change all cell parameters in NPT-run  1: fixed x 2: fixed y 3: fixed z
+  40000 nmdit      Number of MD-iterations
+     50 iout1      Output frequency to unit 71 and unit 73
+1000000 iout2      Save coordinates (xmolout, moldyn.vel, Molfra)
+      1 iout3      Create moldyn.xxx files (0: yes, 1: no)
+      0 ivels      0: Use velocities from vels restart-file; 1: Zero initial velocities
+   2000 iout6      Frequency of molsav.xxxx restart file creation (xyz, vels and accel)
+      1 iout7      Frequency of reaxout.kf writing
+     25 irten      Frequency of removal of rotational and translational motions
+      0 npreit     Nr. of iterations in previous runs
+   0.00 range      range for back-translation of atoms outside periodic box
+# MM-parameters
+  0.001 endmm      End point criterium for MM energy minimisation (force)
+      1 imaxmo     0: conjugate gradient, -1: temperature dependent MD minimization (with imethod 1)
+  40000 imaxit     Maximum number of iterations
+      1 iout4      Frequency of structure output during minimisation
+      0 icelop     0 : no cell opt, 1: numerical cell opt
+1.00010 celopt     Cell parameter change factor
+      0 icelo2     0: Cubic cell optimization; 1/2/3: only a/b/c; 4: c/a ratio
+0.10000 drmax
+      0 imcfrq
+    500 imcstp
+# NEB-parameters
+      0 runNeb     0: NEB, 1: Emin, 2: Emin & Frequency analysis, 3: Frequency analysis, 4: dimer search, 5: Lanczos method
+      7 imgNeb     Number of NEB images
+      1 imgInt     0: No image int., 1: Int. images, 2: Int. images over TS 3: IDPP 4: only int. images, 5: only int. images over TS 
+      1 climb      0 - no climbing image, 1 - climbing image NEB
+      0 dnudge     0: Disable double nudging, 1: DNEB (modified version), 2: orginal approach
+   1000 maxNeb     Number of maximal NEB steps
+  0.230 endNeb     Convergence criteria NEB (in (kcal/mol) / Angstrom)
+   -5.0 spring     Spring konstant NEB (in (kcal/mol) / Angstrom**2)
+  0.100 endEmi     Convergence criteria energy minimisation (NEB Module) (in (kcal/mol) / Angstrom)
+   1000 maxEmi     Number of maximal Emin iterations
+      2 optNeb     Optimizer for NEB: 1: CG, 2: FIRE, 3: LBFGS, 4: QM, 5: SD
+      2 optEmi     Optimizer for Emin: 1: CG, 2: FIRE, 3: LBFGS, 4: QM, 5: SD
+      1 opeNeb     Optimize ends of NEB (0: Off, 1: On)
+      1 convcr     Convergence criteria (0: SQRT(total force), 1: fmax of atoms)
+      1 itraj      Write optimization trajectory (0: Off, 1: On)
+      1 frtraj     Frequency for trajectory writing
+      0 redRTr     Actives NEB-TR for removing translation and rotation during NEB (0 - Off, 1 - all, 2 - only at path optimisation, 3 - only for interpolation)
+# LBFGS-parameters
+     20 memOpt     Number of steps saved when building the inverse Hessian matrix
+      1 aicOpt     Automatically determines INVCURV (0 - Off, 1 - On)
+      1 flmOpt     Use a force based line minimizer for translation (0 - Off, 1 - On)
+   0.01 ivcOpt     Initial inverse curvature, used to construct the inverse Hessian matrix
+    1.1 damOpt     Damping parameter to control the change of the step-size
+# FIRE-parameters
+    1.0 mdtOpt     Maximum dynamical time step allowed
+    1.1 idtOpt     Factor to increase dt
+    0.5 ddtOpt     Factor to decrease dt
+    0.1 falOpt     Parameter that controls velocity damping
+   0.99 dalOpt     Factor to decrease alpha
+      5 fnmOpt     Minimum number of iterations before adjusting alpha and dt
+      0 qmfOpt     Keep velocity in direction of force (0 - Off, 1 - On)
+# SD-parameters
+   0.01 salOpt     Ratio between force and step size
+# Global optimizer parameters  (CG, FIRE, LBFGS, QM, SD)
+    0.1 dtOpt      Dynamical time step (FIRE/QM)
+  0.005 fdsOpt     Finite difference step size / for line optimizer (LBFGS) / to calculate curvature (CG) (Saddle point search: 0.150 / Emin, NEB: 0.005)
+   0.20 maxmov     Maximum allowed step size for translation (CG, FIRE, LBFGS, QM, SD)
+# Frequency analysis 
+      1 ifrMet     0 - Standard method, 1- Frederiksen
+      4 infree     0 - single displacement (backwards) 1 - single displacement (forward), 2 - uses central difference, 4 - four displacements
+      0 freAll     0 - use FREQANALYSIS TAG, 1 - use FIXATOMS TAG, 2 - Calculate frequency including all atoms
+   0.01 fDelta     Displacement value (if freAll not equal zero)
+# Saddle point search parameters
+0.02300 endSad     Convergence criteria for dimer search (NEB Module) (in (kcal/mol) / Angstrom**2) (Default: 1.0 (kcal/mol) / Angstrom
+      1 optSad     Optimizer for Dimer search: 1: CG, 2: FIRE, 3: LBFGS, 4: QM, 5: SD (1 - CG is recommended!)
+      1 iSMode     0 - Read initial lowest modes from 'mode.in'-file; 1 - Generate initial lowest modes from input structures; 2 - Create random initial lowest modes (not recommended)
+  50000 maxSad     Number of maximal saddle point search steps 
+      0 disSad     Make an initial displacement before starting saddle point search (0: Off, 1: On)
+   1.00 disFac     Scaling factor for initial displacement
+      0 intSad     Interpolate between two images before start dimer search
+# Dimer method parameters
+      1 DRoMax     Maximum number of rotation steps per translation step
+ 0.0010 DdrSep     Dimer separation (twice the distance between images)
+   0.23 DFNMin     Magnitude of the rotational force below which the dimer is not rotated
+   23.2 DFNMax     Magnitude of the rotational force below which dimer rotation stops; if the rotational force is between DFNMin and DFNMax, at least one rotational iteration is done
+# Lanczos method parameter
+ 0.0100 lanTol     Tolerance for eigenvalue convergence
+ 0.0010 lanSdr     Finite difference step length 
+     40 lanSnl     Maximum size of Lanczos matrix 
+ 1.0e-6 lanQLc     Convergence criteria for QL algorithm (Estimation of the eigenvectors)
+0.00010 lanQLs     Implicit shift in QL-routine
